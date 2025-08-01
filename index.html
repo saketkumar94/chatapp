@@ -105,7 +105,26 @@
     <!-- Firebase SDK -->
     <script type="module">
         // Import necessary functions from the Firebase SDK
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyD-VIST1Or5aPNOoI6xG9JRPRcqUHLy7CI",
+    authDomain: "chatapp-2f3b7.firebaseapp.com",
+    projectId: "chatapp-2f3b7",
+    storageBucket: "chatapp-2f3b7.firebasestorage.app",
+    messagingSenderId: "774435611468",
+    appId: "1:774435611468:web:90c219736471aca1e225e9",
+    measurementId: "G-HPB0XFPSVQ"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
         import { getAuth, signInAnonymously, onAuthStateChanged, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
         import { getFirestore, doc, collection, addDoc, setDoc, onSnapshot, query, serverTimestamp, updateDoc, getDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
@@ -136,9 +155,7 @@
 
         // Use the globally provided Firebase config and App ID
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-chat-app';
-        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : null;
-
-        // --- INITIALIZATION ---
+         // --- INITIALIZATION ---
         async function main() {
             if (!firebaseConfig) {
                 console.error("Firebase config not found.");
